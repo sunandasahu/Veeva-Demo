@@ -1,11 +1,10 @@
-
-@tag
+@hold
 Feature: Place hold on a book in library application
  
 
-  @e2e1
+  @e2e
   Scenario Outline: Verify Library member should able to place books on hold
-    Given Successfully login to users library account
+    Given User login to library account successfully
     When In Home page, Search a book using <bookTitle>
     And  Select Format as <format>
     Then Available Books should be retrieved
@@ -20,10 +19,17 @@ Feature: Place hold on a book in library application
     And Check for Holds count
     Then Hold count should increase
     And Book details should be shown
+    
+     Examples: 
+    | bookTitle 		  | format 							| location  | notificationMethod |
+		| Harry Potter 		|	Book(Regular Print) | Library 1 | Email 						 |
+		| Boxcar Children	| DVD 								| Library 2 | Text    					 |
+		| Big Nate 				| Book(Large Print) 	| Library 1 | Phone							 |
+      
 
-  @tag2
+  @e2e
   Scenario: Library member edit the location & notification method on book on Hold
-    Given Successfully login to users library account
+    Given User login to library account successfully
     When Go to My List - Hold Details
     And  Click on Edit button next to book to be Edited
     Then Edit Hold page should be displayed
@@ -34,11 +40,3 @@ Feature: Place hold on a book in library application
     And Current Holds page should be displayed
     And Updated Pick up location should be shown
     And Updated Phone number should be shown
-    
-
-    Examples: 
-    | bookTitle 		  | format 							| location  | notificationMethod |
-		| Harry Potter 		|	Book(Regular Print) | Library 1 | Email 						 |
-		| Boxcar Children	| DVD 								| Library 2 | Text    					 |
-		| Big Nate 				| Book(Large Print) 	| Library 1 | Phone							 |
-      
